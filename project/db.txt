@@ -1,0 +1,17 @@
+CREATE DATABASE node_project;
+
+CREATE TABLE `articles` (
+   `id` int NOT NULL AUTO_INCREMENT,
+   `title` varchar(200) NOT NULL,
+   `body` varchar(10000) NOT NULL,
+   `email` varchar(200) NOT NULL,
+   `createdAt` datetime NOT NULL,
+   `updatedAt` datetime DEFAULT NULL,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE `users` (
+   `userid` varchar(20) DEFAULT NULL,
+   `name` varchar(20) DEFAULT NULL,
+   `password` varchar(300) DEFAULT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>반복적인 AJAX 요청 및 멈추기</h2>
+  <div id="container"></div>
+  <button onclick="get_time()">Ajax get 요청으로 현재 시간 반복 요청</button>
+  <button onclick="stop()">Ajax get 요청 멈추기</button>
+  <div><a href="/">HOME</a></div>
+
+  <script>
+    let interval //객체에 담아야 주소를 특정하여 멈출 수 있다. 
+    function get_time(){
+      interval = setInterval(async ()=>{
+        const result = await axios.get('/get_datetime')
+        console.log('result.data: ', result.data);
+        console.log('result.data: ', result.data.year);
+        let newDiv = document.createElement("div");
+        let str = `${result.data.hours}:${result.data.minutes}:${result.data.seconds}`
+        newDiv.innerHTML = str;
+        document.getElementById("container").appendChild(newDiv);
+
+      }, 1000) //무한반복되는 무언가를 만들 수 있다.
+    }
+
+    function stop(){
+      console.log("stopped")
+      clearInterval(interval)
+    }
+    
+  </script>
+</body>
+</html>

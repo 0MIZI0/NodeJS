@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../layouts/head') %>
+  </head>
+  <body>
+    <%- include('../layouts/nav') %>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">Board</h2>
+
+      <table class="board-table table table-sm border-bottom">
+
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col" class="date">Date</th>
+            <th scope="col" class="user">By</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if(articles == null || articles.length == 0){ %>
+            <tr>
+              <td colspan=2> There is no data to show :( </td>
+            </tr>
+          <% } %>
+          <% articles.forEach(function(article) { %>
+            <tr>
+              <td>
+                <a href="/articles/<%= article.id %>"><div class="ellipsis"><%= article.title %></div></a>
+              </td>
+              <td class="date">
+                <span data-date="<%= article.createdAt %>"></span> <!-- 1 -->
+              </td>
+              <td class="user">
+                <%=article.email%>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+
+      </table>
+
+      <div>
+        <a class="btn btn-primary" href="/articles/new">New</a>
+      </div>
+
+    </div>
+  </body>
+</html>

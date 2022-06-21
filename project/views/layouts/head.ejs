@@ -1,0 +1,48 @@
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- jquery & bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- 폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+<!-- my css -->
+<link rel="stylesheet" href="/static/stylesheets/master.css" type="text/css">
+<link rel="stylesheet" href="/static/stylesheets/summernotes/summernote-lite.css">
+
+<!-- js -->
+<script src="/static/javascripts/datetime.js"></script>
+<script src="/static/javascripts/summernotes/summernote-lite.js"></script>
+<script src="/static/javascripts/summernotes/summernote-ko-KR.js"></script>
+<script>
+   document.addEventListener("DOMContentLoaded", function(){
+      $('#summernote').summernote({
+        height: 300,                 // 에디터 높이
+        minHeight: null,             // 최소 높이
+        maxHeight: null,             // 최대 높이
+        prettifyHtml: false,
+        focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+        lang: "ko-KR",					// 한글 설정
+        placeholder: '적어 보세요!',
+        toolbar: [
+              // [groupName, [list of button]]
+              ['fontname', ['fontname']],
+              ['fontsize', ['fontsize']],
+              ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+              ['color', ['forecolor','color']],
+              ['table', ['table']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['height', ['height']],
+              ['insert',['link','video']],
+              ['view', ['codeview','help']]
+            ],
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+    });
+  });
+</script> 
+
+<title><%=title%></title>

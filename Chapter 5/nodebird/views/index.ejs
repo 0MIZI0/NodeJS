@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>AJAX GET POST 요청 처리</h2>
+  <h3 id="method"></h3>
+  <h3 id="msg"></h3>
+  <button onclick="request_get1()">Ajax get 요청 Promise 처리</button>
+  <button onclick="request_get2()">Ajax get 요청 Async/Await 처리</button>
+  <button onclick="request_post()">Ajax post 요청</button>
+  <div><a href="/datetime">datetime 페이지로 이동하기</a></div>
+
+  <script>
+    // get 요청 보내기
+    function request_get1(){
+      axios.get('/get')
+      .then((result) => {
+        console.log('result: ', result);
+        console.log('result.data: ', result.data);
+        console.log(result.data.responseData); // {}
+        let str = result.data.requestMethod + " : " + result.data.responseData + "<br>"
+        document.getElementById('method').innerHTML += str;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
+
+    async function request_get2(){
+      try {
+        const result = await axios.get('/get')
+        
+        console.log('result: ', result);
+        console.log('result.data: ', result.data);
+        console.log(result.data.responseData); // {}
+        let str = result.data.requestMethod + " : " + result.data.responseData + "<br>"
+        document.getElementById('method').innerHTML += str;
+      } catch (error) {
+        console.error(error);
+      }
+    } 
+
+    // post 요청
+    async function request_post(){
+      try {
+        // FormData는 form 태그의 데이터를 동적으로 제어할 수 있는 기능으로 AJAX와 함께 많이 사용됨.
+        const formData = new FormData();
+        formData.append('name', 'dongyun');
+        formData.append('msg', 'Hi Server!!!');
+        
+        const result = await axios.post('/post');
+
+        console.log('result: ', result);
+        console.log('result.data: ', result.data);
+        console.log(result.data.responseData);
+        let str = result.data.requestMethod + " : " + result.data.responseData + "<br>"
+        document.getElementById('method').innerHTML += str;
+      }catch(error){
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>

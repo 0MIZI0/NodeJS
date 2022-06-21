@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mt-2 mb-3 mx-2">
+  <div class="navbar-brand active">Mi_Zi:P</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="/articles" class="nav-link">Articles</a></li> 
+    </ul>
+    <ul class="navbar-nav">
+      <% if( userData.isLogin ){ %>
+        <li class="nav-item">
+          <a href="/users/logout" class="nav-link"> <%= userData.nickname %> Logout</a>
+        </li>
+      <% }else{ %>
+        <li class="nav-item">
+          <a href="/users/login" class="nav-link">Login</a>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
