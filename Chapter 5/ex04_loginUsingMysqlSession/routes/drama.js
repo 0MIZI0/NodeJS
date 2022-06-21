@@ -11,7 +11,7 @@ router.post('/', async (req, res, next)=>{
   if(req.body.title && req.body.actor){
     await model.insertData(req.body.title, req.body.actor);
   }
-  res.redirect('/');
+  res.redirect('/drama');
 })
 
 router.post('/update/:id', async function(req, res){
@@ -19,13 +19,13 @@ router.post('/update/:id', async function(req, res){
   if(req.body.title && req.body.actor){
     await model.updateDrama(req.params.id, req.body);
   }
-    res.redirect('/');
+    res.redirect('/drama');
 })
 
 router.get('/delete/:id', async function(req, res){
   //res.send(`/delete req.params.id: ${req.params.id}`);
   await model.deleteDrama(req.params.id);
-  res.redirect('/')
+  res.redirect('/drama')
 })
 
 module.exports = router;
